@@ -76,8 +76,8 @@ class CollectionLayout: UICollectionViewFlowLayout {
         -> [UICollectionViewLayoutAttributes]? {
       return cache
     }
-    override func layoutAttributesForItem(at indexPath: IndexPath)
-        -> UICollectionViewLayoutAttributes? {
-        return cache[indexPath.item]
-    }
+//    override func layoutAttributesForItem(at indexPath: IndexPath)
+//        -> UICollectionViewLayoutAttributes? {
+//        return cache[indexPath.item]
+//    }
 }

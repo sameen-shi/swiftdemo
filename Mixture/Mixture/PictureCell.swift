@@ -28,10 +28,10 @@ class PictureCell: UICollectionViewCell,UICollectionViewDelegate, UICollectionVi
             pictureData.append(tempImage!)
         }
         cycleCollectionView = UICollectionView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-12, height: (UIScreen.main.bounds.width-12)*2.0/3.0),collectionViewLayout:flowlayout)
-        flowlayout.itemSize = CGSize(width: UIScreen.main.bounds.width-12, height: (UIScreen.main.bounds.width-12)*2.0/3.0);
-        flowlayout.minimumInteritemSpacing = 0;
-        flowlayout.minimumLineSpacing = 0;
-        flowlayout.scrollDirection = UICollectionView.ScrollDirection.horizontal;
+        flowlayout.itemSize = CGSize(width: UIScreen.main.bounds.width-12, height: (UIScreen.main.bounds.width-12)*2.0/3.0)
+        flowlayout.minimumInteritemSpacing = 0
+        flowlayout.minimumLineSpacing = 0
+        flowlayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         cycleCollectionView!.backgroundColor = UIColor.white
         cycleCollectionView!.isPagingEnabled = true
         cycleCollectionView!.dataSource  = self
@@ -53,11 +53,11 @@ class PictureCell: UICollectionViewCell,UICollectionViewDelegate, UICollectionVi
     
     @objc func nextPageView(){
         let indexPath = cycleCollectionView!.indexPathsForVisibleItems.last
-        var item = indexPath!.row + 1;
+        var item = indexPath!.row + 1
         if item == pictureData.count {
             item = 0
         }
-        self.pageControl.currentPage = item;
+        self.pageControl.currentPage = item
         let nextIndexPath = NSIndexPath.init(row: item, section: 0)
         cycleCollectionView!.scrollToItem(at: nextIndexPath as IndexPath, at: UICollectionView.ScrollPosition.left, animated: true)
     }

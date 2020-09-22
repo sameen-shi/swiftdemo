@@ -36,8 +36,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as!CollectionViewCell
-        cell.waterimage = UIImageView(image: self.imagedata[indexPath.row])
-        cell.contentView.addSubview(cell.waterimage)
+        cell.waterimage.image = self.imagedata[indexPath.row]
+        cell.waterimage.frame = CGRect(x: 0, y: 0, width: self.imagedata[indexPath.row].size.width, height: self.imagedata[indexPath.row].size.height)
         return cell
     }
     

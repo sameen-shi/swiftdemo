@@ -10,4 +10,13 @@ import UIKit
 
 class TextCell: UICollectionViewCell {
     var textView:UILabel!
+    override init(frame:CGRect){
+        super.init(frame:frame)
+        textView = UILabel()
+        self.contentView.addSubview(textView)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

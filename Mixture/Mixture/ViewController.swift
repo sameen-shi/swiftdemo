@@ -11,11 +11,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
   
     var unsureimage:UIImage!
     let textData: [String] = ["I was there for you before I'll be there for you again I'll always be there for you","The Wheel turns,nothing is ever new","When life gets too strange, too impossible, too frightening, there is always one last hope. When all else fails, there are two men sitting arguing in a scruffy flat.","hello shibo"]
-    var unsureNumber: Int = 3;
+    var unsureNumber: Int = 3
     
     private lazy var collectionView : UICollectionView = {
             let layout = CollectionLayout ()
-            layout.scrollDirection = UICollectionView.ScrollDirection.vertical;
+            layout.scrollDirection = UICollectionView.ScrollDirection.vertical
             layout.delegate = self
             let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
             view.addSubview(collectionView)
@@ -60,18 +60,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         if(indexPath.section == 1){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UnsureCell", for: indexPath) as!UnsureCell
-            cell.pictureView = UIImageView(image: unsureimage)
-            cell.contentView.addSubview(cell.pictureView)
-            
+            cell.pictureView.image = unsureimage
+            let size = self.collectionView.layoutAttributesForItem(at: indexPath)!.frame.size
+            cell.pictureView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
             return cell
         }
         if(indexPath.section == 2){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextCell", for: indexPath) as!TextCell
-            cell.textView = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 12, height: self.getHeight(withLabelText: textData[indexPath.row],width: UIScreen.main.bounds.width-12,font: UIFont.init(name: "Georgia", size: 30)!)))
+            cell.textView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 12, height: self.getHeight(withLabelText: textData[indexPath.row],width: UIScreen.main.bounds.width-12,font: UIFont.init(name: "Georgia", size: 30)!))
             cell.textView.text = textData[indexPath.item]
-       
+            cell.textView.font = UIFont.init(name: "Georgia", size: 30)
             cell.textView.numberOfLines = 0
-            cell.addSubview(cell.textView)
+            
             cell.contentView.layer.addSublayer(self.getCicleAngle(bound:cell.contentView.bounds))
             return cell
         }
@@ -138,10 +138,10 @@ extension ViewController: CollectionLayoutProtocol {
 
 extension UIImage {
     func reSizeImage(reSize:CGSize)->UIImage {
-        UIGraphicsBeginImageContextWithOptions(reSize,false,UIScreen.main.scale);
-        self.draw(in: CGRect(x: 0, y: 0, width: reSize.width, height: reSize.height));
-        let reSizeImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!;
-        UIGraphicsEndImageContext();
-        return reSizeImage;
+        UIGraphicsBeginImageContextWithOptions(reSize,false,UIScreen.main.scale)
+        self.draw(in: CGRect(x: 0, y: 0, width: reSize.width, height: reSize.height))
+        let reSizeImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return reSizeImage
     }
 }
